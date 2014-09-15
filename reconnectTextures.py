@@ -44,7 +44,7 @@ def getObjectMaterials(objList):
 
 def main():
 	
-	directory = "/Users/patrickcrawford/Documents/blender/Minecraft/LoC_Passagegrave/assets/tex/"
+	directory = "/path/to/your/folder/"
 	matList = getObjectMaterials(bpy.context.selected_objects)
 	reconnectTextures(matList,directory)
 	
