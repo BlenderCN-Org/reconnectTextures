@@ -10,6 +10,7 @@ Needs to be given a UI and such
 
 
 import bpy
+import os
 
 def reconnectTextures(matList,directory):
 	for mat in matList:
