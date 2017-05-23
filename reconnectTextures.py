@@ -16,9 +16,12 @@ def reconnectTextures(matList,directory):
 		for textureSlot in mat.texture_slots:
 			if textureSlot == None: continue
 			image = textureSlot.texture.image
-			initial = image.filepath
+			initial = bpy.path.basename(image.filepath)
 			# do things to recover path
-			image.filepath = directory+initial.split('/')[-1]
+			newPath = os.path.join(bpy.path.abspath(directory),initial)
+			if "//" in image.filepath:
+				newPath = bpy.path.relpath(newPath)	
+			image.filepath = 
 			image.reload()
 			bpy.ops.image.reload()
 	for area in bpy.context.screen.areas:
@@ -48,6 +51,6 @@ def main():
 	matList = getObjectMaterials(bpy.context.selected_objects)
 	reconnectTextures(matList,directory)
 	
-	#currently need to reload blend file to work. sigh.
+	#currently need to reload blend file to work
 main()
 
